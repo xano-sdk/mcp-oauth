@@ -1,0 +1,160 @@
+# @xano-sdk/mcp-oauth
+
+> Hosted OAuth sign-in for Xano SDK MCP servers: a branded sign-in and consent page, the
+> endpoints behind it, and the `oauth` block to pass to `mcpServer()`.
+> Registers one API group (`MCP OAuth`) and four endpoints (`GET mcp_oauth/login`,
+> `GET mcp_oauth/request`, `POST mcp_oauth/sign_in`, `POST mcp_oauth/complete`) onto a
+> consumer's workspace. No tables. There is no runtime: every export is a typed def object, and
+> the consumer's `Xano` instance does all encoding at `export()`.
+
+Hosted mode only (the platform is the authorization server; this module is the page it sends users
+to). Users sign in with email and password against the consumer's own auth table. For tokens from
+an external identity provider, use `mcpServer({ oauth: { mode: "external", ... } })` instead - no
+module needed.
+
+## Install
+
+```bash
+npm install @xano-sdk/mcp-oauth @xano/sdk
+```
+
+`@xano/sdk` is a **peer dependency**, range `>=1.0.0 <2.0.0` - one shared copy only. Tested
+against **1.0.0** exactly: the version its golden bundle fixture was generated against. The golden
+fixture freezes the bytes this module encodes to (endpoints, headers, the rendered page). It does
+not cover what the platform does with them - that is covered by the live runs recorded in
+`AGENTS.md`.
+
+`xanosdk init --marketplace @xano-sdk/auth,@xano-sdk/mcp-oauth` writes the `registerMcpOauth`
+call with `@xano-sdk/auth`'s `userTable`. It cannot write the `mcpServer({ oauth })` line - add it.
+
+## Quickstart
+
+```ts
+// xano/index.ts
+import { workspace, workspaceConfig, table, f, tool, mcpServer, s, auth, ref } from "@xano/sdk";
+import { registerMcpOauth } from "@xano-sdk/mcp-oauth";
+
+const users = table({
+  name: "user",
+  auth: true,
+  schema: { email: f.email({ required: true }), password: f.password() },
+  index: [{ type: "unique", fields: [{ name: "email" }] }],
+});
+
+const app = workspace("notes").registerWorkspace(
+  workspaceConfig({ name: "notes", env: { MCP_OAUTH_LOGIN_URL: "" } }),
+);
+app.registerTables([users]);
+
+export const mcpOauth = registerMcpOauth(app, { authTable: users });
+
+const whoami = tool({
+  name: "whoami",
+  description: "The signed-in user's email.",
+  stack: [s.db.get({ table: users, fieldValue: auth("id"), output: ["email"], as: "me" })],
+  response: { email: ref("me.email") },
+});
+
+const notes = mcpServer({
+  name: "notes",
+  tools: [{ tool: whoami, auth: users }],
+  oauth: mcpOauth.oauth,
+});
+
+app.registerTools([whoami]).registerMcpServers([notes]);
+export default app;
+```
+
+Then, once per environment:
+
+1. `npx xanosdk deploy ./xano/index.ts --allow-empty-env=MCP_OAUTH_LOGIN_URL` - the first deploy,
+   before the URL exists.
+2. The login URL is the backend URL the deploy prints (it includes `/tenant/<name>` on a tenant or
+   ephemeral) plus `mcpOauth.loginQuery.getPath()`, i.e. `/api:mcp-oauth-notes/mcp_oauth/login`.
+3. Put `MCP_OAUTH_LOGIN_URL=<that URL>` in `xano/.env` (so later deploys keep it), and set it live:
+   `printf '%s' '<that URL>' | npx xanosdk env set MCP_OAUTH_LOGIN_URL`.
+4. Connect an MCP client to the server's URL. Redo 2-3 when an ephemeral is re-created.
+
+## Exports
+
+- `registerMcpOauth(app, options): McpOauthDefs` - builds, registers, returns the defs. Once per app.
+- `createMcpOauth(options, workspaceName?)` - builds without registering. Pass `canonical`.
+- `exportLoginPage({ apiBaseUrl, brandName?, brandColor?, brandLogoUrl?, sharedDomainNotice? }): { html, headers }`
+  - the same page, for your own domain.
+- `McpOauthDefs`: `{ group, loginQuery, requestQuery, signInQuery, completeQuery, oauth }`.
+  `oauth` is `{ mode: "hosted", authTable, loginUrl }` (the SDK's `McpOauthHosted`).
+- Constants: `DEFAULT_RATE_LIMIT` (`{ max: 5, ttl: 600 }`), `DEFAULT_LOGIN_URL_ENV`
+  (`"MCP_OAUTH_LOGIN_URL"`), `SIGN_IN_TOKEN_SECONDS` (`600`), `CONTRACT`.
+- Types (erase at compile time): `McpOauthOptions`, `RateLimitOptions`, `BrandingOptions`,
+  `ExportLoginPageOptions`, `RenderedPage`, `McpOauthRequestParams`, `McpOauthRequestResponse`,
+  `McpOauthSignInBody`, `McpOauthSignInResponse`, `McpOauthCompleteBody`, `McpOauthCompleteResponse`.
+
+## Endpoints
+
+| Route | Auth | Input | Response |
+|---|---|---|---|
+| `GET mcp_oauth/login` | none | `mcp_request?` | the HTML page |
+| `GET mcp_oauth/request` | none | `mcp_request` | `{ server_name, client_name, client_logo, callback_host, client_verified, contract }` |
+| `POST mcp_oauth/sign_in` | none, rate limited | `{ email, password }` | `{ token }` (600 s session) |
+| `POST mcp_oauth/complete` | the auth table | `{ mcp_request, decision: "approve" \| "deny" }` | `{ continue_url }` |
+
+`client_logo` is `""` unless the client is verified. Every `sign_in` refusal is
+`403 "Invalid email or password."`.
+
+## Options
+
+- `authTable` (required) - your `table({ auth: true })` handle. Must be the MCP server's auth table;
+  the returned `oauth` already is.
+- `emailColumn` (`"email"`), `passwordColumn` (`"password"`, must be `f.password()`).
+- `activeColumn` - a boolean column that must be true to sign in. Unset: any row with a password.
+- `loginUrl` (`env("MCP_OAUTH_LOGIN_URL")`) - an `https:` string or `env("NAME")`.
+- `canonical` (`mcp-oauth-<workspace name>`) - pinned so the login URL is stable. Unique per
+  INSTANCE across all workspaces; on a deploy conflict, pass another and rebuild the URL.
+- `brandName`, `brandColor` (`"#2563eb"`, hex), `brandLogoUrl` (https).
+- `sharedDomainNotice` (`true`) - a developer notice on `*.xano.io` hosts.
+- `rateLimit` (`{ max: 5, ttl: 600 }` per IP and per email, or `false`) - on by default: `sign_in`
+  is a public password check. The window stays inside the 10-minute sign-in.
+- `history` (`false`) - request bodies carry a password and a bearer token.
+
+## Calling the endpoints from a typed client
+
+The page does this already; you only need it for a custom page. Types come from the defs:
+`McpOauthSignInBody`, `McpOauthSignInResponse`, and so on. Paths come from the defs too -
+`mcpOauth.signInQuery.getPath()` - and resolve without a lock because the group's canonical is
+pinned.
+
+## Behaviour verified against a live instance
+
+- The page is served as raw HTML by an endpoint, with its CSP and headers intact.
+- Browsers hash inline script and style after turning CRLF into LF; the page is LF-only.
+- The full hosted flow passed on an ephemeral (a tenant) in both modes, scripted and in Chrome.
+- An expired session gets `401` from the endpoint's auth block before `complete` runs.
+- The group's default CORS allows the exported page's cross-origin calls, `Authorization` included
+  (Chrome).
+
+## Constraints for agents (read before using)
+
+- Pass `mcpOauth.oauth` to `mcpServer({ oauth })` verbatim. Never hand-build the hosted block: the
+  platform refuses a sign-in whose session is on any other auth table.
+- Call `registerMcpOauth` ONCE per app. One instance serves every MCP server on that auth table.
+- Declare `MCP_OAUTH_LOGIN_URL` in `workspaceConfig({ env })`, and use
+  `--allow-empty-env=MCP_OAUTH_LOGIN_URL` only for the first deploy. An unset login URL makes every
+  sign-in fail with a 503 from the platform.
+- Build the login URL from the deployed backend URL plus `loginQuery.getPath()`. On a tenant or
+  ephemeral, the backend URL includes `/tenant/<name>`.
+- Never use `s.mcp.oauth.complete`'s `unsafe_user_id` in endpoints you add. It skips the platform's
+  table and session checks.
+- Do not turn `history` on or `rateLimit` off "to debug" in production.
+- The sign-in token is a full session on the auth table for 600 s, valid on every endpoint whose
+  `auth` is that table. Rules your own login applies (email verification, MFA) are NOT applied;
+  only `activeColumn` is.
+- For production, host the page on your own domain with `exportLoginPage` and point
+  `MCP_OAUTH_LOGIN_URL` at it. Serve it with the returned headers, keep the query string, and do not
+  minify or inject into the HTML (the CSP hashes the inline script and style).
+- Re-export the page after changing host, canonical, tenant or branding, and after any release whose
+  notes say "re-export required".
+
+## Docs
+
+- [README.md](README.md)
+- [AGENTS.md](AGENTS.md)

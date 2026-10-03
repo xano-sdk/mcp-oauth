@@ -1,0 +1,87 @@
+{
+  "name": "@xano-sdk/mcp-oauth",
+  "version": "1.0.0",
+  "description": "Hosted OAuth sign-in for Xano SDK MCP servers: a branded sign-in and consent page, the endpoints behind it, and the oauth block for mcpServer().",
+  "type": "module",
+  "license": "MIT",
+  "author": "Xano",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "xano",
+    "xanosdk",
+    "xanoscript",
+    "mcp",
+    "oauth",
+    "authentication",
+    "consent",
+    "backend",
+    "codegen"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xanots/mcp-oauth.git"
+  },
+  "homepage": "https://github.com/xanots/mcp-oauth#readme",
+  "bugs": {
+    "url": "https://github.com/xanots/mcp-oauth/issues"
+  },
+  "xanosdk": {
+    "register": "registerMcpOauth",
+    "returns": "handle",
+    "options": {
+      "authTable": {
+        "package": "@xano-sdk/auth",
+        "export": "userTable"
+      }
+    }
+  },
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.map",
+    "README.md",
+    "AGENTS.md",
+    "llms.txt"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc --noEmit && vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "fixture:regen": "tsx scripts/regen-golden.ts",
+    "prepublishOnly": "npm run build",
+    "release": "npm publish --access public",
+    "release:beta": "npm version prerelease --preid=beta -m \"chore(release): %s\" && npm publish --tag beta --access public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@xano/sdk": ">=1.0.0 <2.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "@xano/sdk": "1.0.0",
+    "eslint": "^9.0.0",
+    "happy-dom": "^15.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.23.1",
+    "typescript": "^5.5.0",
+    "vitest": "^2.0.0"
+  }
+}

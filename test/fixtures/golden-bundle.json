@@ -1,0 +1,1912 @@
+{
+  "app": "xano",
+  "version": "1.03",
+  "type": "workspace",
+  "payload": {
+    "partial": false,
+    "workspace": {
+      "name": "xts-mcp-oauth-golden",
+      "description": "",
+      "canonical": "",
+      "use_xdo": false,
+      "preferences": {
+        "allow_push": false,
+        "track_performance": true,
+        "use_internal_docs": false
+      },
+      "swagger": false,
+      "env": [],
+      "settings": {
+        "ai_enabled": false,
+        "ai_settings": {
+          "providers": {
+            "google": {
+              "model": "",
+              "api_key": ""
+            },
+            "openai": {
+              "model": "",
+              "api_key": ""
+            },
+            "anthropic": {
+              "model": "",
+              "api_key": ""
+            },
+            "azure-openai": {
+              "model": "",
+              "api_key": "",
+              "base_url": "",
+              "api_version": ""
+            }
+          },
+          "default_provider": "free"
+        },
+        "hide_xano_agent": false
+      },
+      "guid": "070f34aaf399562bf4414acfcc7e489a"
+    },
+    "dbo": [
+      {
+        "name": "golden_member",
+        "description": "",
+        "docs": "",
+        "auth": true,
+        "install": false,
+        "schema": [
+          {
+            "name": "id",
+            "type": "int",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          },
+          {
+            "name": "created_at",
+            "type": "epochms",
+            "_xsid": "",
+            "nullable": false,
+            "default": "now",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": false,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "private",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          },
+          {
+            "name": "login",
+            "type": "email",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          },
+          {
+            "name": "secret",
+            "type": "password",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "internal",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          },
+          {
+            "name": "enabled",
+            "type": "bool",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": false,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          }
+        ],
+        "index": [
+          {
+            "name": "",
+            "lang": "",
+            "type": "primary",
+            "fields": [
+              {
+                "name": "id",
+                "op": ""
+              }
+            ],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            }
+          },
+          {
+            "name": "",
+            "lang": "",
+            "type": "btree",
+            "fields": [
+              {
+                "name": "created_at",
+                "op": "desc"
+              }
+            ],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            }
+          },
+          {
+            "name": "",
+            "lang": "",
+            "type": "btree|unique",
+            "fields": [
+              {
+                "name": "login",
+                "op": ""
+              }
+            ],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            }
+          }
+        ],
+        "autocomplete": [],
+        "external": {
+          "source": "",
+          "id": ""
+        },
+        "views": [],
+        "tag": [],
+        "sql_name": "",
+        "use_xdo": false,
+        "market_item": {
+          "id": 0,
+          "version": 0,
+          "guid": ""
+        },
+        "guid": "50c59633cff3dc002a763a036fb062b7",
+        "import": {
+          "mode": "standard"
+        }
+      }
+    ],
+    "addon": [],
+    "function": [],
+    "middleware": [],
+    "trigger": [],
+    "task": [],
+    "query": [
+      {
+        "name": "mcp_oauth/login",
+        "description": "The MCP sign-in and consent page. Point MCP_OAUTH_LOGIN_URL here.",
+        "docs": "",
+        "api_enabled": true,
+        "auth": false,
+        "response_type": "standard",
+        "verb": "GET",
+        "disabled": false,
+        "app": {
+          "id": "c28ec38f91b73b91d20ba717a4ef256c"
+        },
+        "cache": {
+          "active": false,
+          "ttl": 3600,
+          "input": true,
+          "auth": true,
+          "datasource": true,
+          "ip": false,
+          "headers": [],
+          "env": []
+        },
+        "output": [],
+        "middleware": {
+          "pre_customize": false,
+          "post_customize": false,
+          "pre": [],
+          "post": []
+        },
+        "tag": [],
+        "history": {
+          "inherit": true,
+          "enabled": true,
+          "limit": 100
+        },
+        "input": [
+          {
+            "name": "mcp_request",
+            "type": "text",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": false,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          }
+        ],
+        "result": [
+          {
+            "filters": [],
+            "name": "",
+            "tag": "const",
+            "value": "<!doctype html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"referrer\" content=\"no-referrer\">\n<meta name=\"robots\" content=\"noindex\">\n<title>Sign in</title>\n<style>\n:root { color-scheme: light dark; --bg: #f4f4f5; --card: #ffffff; --text: #18181b; --muted: #52525b; --line: #e4e4e7; --warn-bg: #fef3c7; --warn-text: #78350f; --error: #b91c1c; }\n@media (prefers-color-scheme: dark) {\n  :root { --bg: #09090b; --card: #18181b; --text: #fafafa; --muted: #a1a1aa; --line: #27272a; --warn-bg: #422006; --warn-text: #fde68a; --error: #fca5a5; }\n}\n* { box-sizing: border-box; }\nbody { margin: 0; min-height: 100vh; display: flex; align-items: flex-start; justify-content: center; padding: 48px 16px; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, -apple-system, \"Segoe UI\", Roboto, sans-serif; }\nmain { width: 100%; max-width: 400px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 28px 24px; }\n.brand { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; font-weight: 600; }\n.brand img { width: 32px; height: 32px; border-radius: 6px; object-fit: contain; }\nh1 { font-size: 1.25rem; line-height: 1.3; margin: 0 0 16px; outline: none; }\np { margin: 0 0 12px; }\n.request { border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; margin-bottom: 20px; }\n.request .client { display: flex; align-items: center; gap: 10px; font-weight: 600; }\n.request .client img { width: 28px; height: 28px; border-radius: 6px; object-fit: contain; }\n.request dl { margin: 10px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; font-size: 0.875rem; }\n.request dt { color: var(--muted); }\n.request dd { margin: 0; overflow-wrap: anywhere; }\n.warning { background: var(--warn-bg); color: var(--warn-text); border-radius: 6px; padding: 8px 10px; margin-top: 10px; font-size: 0.875rem; }\nlabel { display: block; font-size: 0.875rem; font-weight: 500; margin: 0 0 4px; }\ninput { width: 100%; min-height: 44px; padding: 10px 12px; margin: 0 0 14px; border: 1px solid var(--line); border-radius: 8px; background: transparent; color: inherit; font: inherit; }\ninput:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }\n.actions { display: flex; flex-direction: column; gap: 10px; margin-top: 4px; }\nbutton { min-height: 44px; padding: 10px 16px; border-radius: 8px; font: inherit; font-weight: 600; cursor: pointer; border: 1px solid var(--line); background: transparent; color: inherit; }\nbutton.primary { background: var(--accent); border-color: var(--accent); color: #ffffff; }\nbutton[disabled] { opacity: 0.6; cursor: progress; }\nbutton.link { border: 0; min-height: 44px; padding: 0; background: none; color: var(--muted); font-weight: 500; text-decoration: underline; }\n.error { color: var(--error); font-size: 0.875rem; min-height: 1.25rem; margin: 8px 0 0; }\n.muted { color: var(--muted); font-size: 0.875rem; }\n.notice { margin: 20px 0 0; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.75rem; }\n[hidden] { display: none !important; }\n:root { --accent: #7c3aed; }\n</style>\n</head>\n<body data-api-base=\"\" data-contract=\"1\" data-notice=\"0\">\n<main id=\"app\">\n<header class=\"brand\"><img src=\"https://cdn.golden.example.com/logo.png\" alt=\"\" referrerpolicy=\"no-referrer\" width=\"32\" height=\"32\"><span>Golden &amp; Co &lt;Ltd&gt;</span></header>\n<noscript><p>JavaScript is required to sign in.</p></noscript>\n<section id=\"view-loading\"><h1 id=\"view-loading-heading\" tabindex=\"-1\">Loading…</h1></section>\n<div id=\"request\" class=\"request\" hidden>\n<div class=\"client\"><img id=\"client-logo\" alt=\"\" width=\"28\" height=\"28\" hidden><span id=\"client-name\"></span></div>\n<dl>\n<dt>Wants access to</dt><dd id=\"server-name\"></dd>\n<dt>Sends you back to</dt><dd id=\"callback-host\"></dd>\n<dt>Client</dt><dd id=\"client-status\"></dd>\n</dl>\n<p id=\"unverified-warning\" class=\"warning\" hidden>This app is not verified. Only continue if you started this sign-in and recognize where it sends you back to.</p>\n</div>\n<section id=\"view-signin\" hidden>\n<h1 id=\"view-signin-heading\" tabindex=\"-1\">Sign in to continue</h1>\n<form id=\"signin\" method=\"post\" action=\"#\" autocomplete=\"on\">\n<label for=\"email\">Email</label>\n<input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"username\" required>\n<label for=\"password\">Password</label>\n<input id=\"password\" name=\"password\" type=\"password\" autocomplete=\"current-password\" required>\n<div class=\"actions\">\n<button id=\"signin-submit\" class=\"primary\" type=\"submit\">Sign in</button>\n<button id=\"signin-cancel\" type=\"button\">Cancel</button>\n</div>\n<p id=\"signin-error\" class=\"error\" role=\"alert\" aria-live=\"assertive\"></p>\n</form>\n<p class=\"muted\">No account? Contact the app's owner.</p>\n</section>\n<section id=\"view-consent\" hidden>\n<h1 id=\"view-consent-heading\" tabindex=\"-1\">Allow access?</h1>\n<p class=\"muted\">Signed in as <strong id=\"signed-in-as\"></strong></p>\n<div class=\"actions\">\n<button id=\"allow\" class=\"primary\" type=\"button\">Allow</button>\n<button id=\"deny\" type=\"button\">Deny</button>\n<button id=\"switch-account\" class=\"link\" type=\"button\">Use a different account</button>\n</div>\n<p id=\"consent-error\" class=\"error\" role=\"alert\" aria-live=\"assertive\"></p>\n</section>\n<section id=\"view-terminal\" hidden>\n<h1 id=\"view-terminal-heading\" tabindex=\"-1\"></h1>\n<p id=\"terminal-text\" aria-live=\"polite\"></p>\n<button id=\"terminal-retry\" type=\"button\" hidden>Try again</button>\n</section>\n<p id=\"shared-notice\" class=\"notice\" hidden>Developer notice: this page is served from a shared Xano instance domain. Serve it from your own domain in production.</p>\n</main>\n<script>\n(function () {\n  \"use strict\";\n  var body = document.body;\n  var $ = function (id) { return document.getElementById(id); };\n  var CONTRACT = Number(body.getAttribute(\"data-contract\"));\n  var base = body.getAttribute(\"data-api-base\") || \"\";\n  if (base === \"\") {\n    base = location.origin + location.pathname.replace(/\\/mcp_oauth\\/login\\/?$/, \"\");\n  }\n  var requestId = new URLSearchParams(location.search).get(\"mcp_request\") || \"\";\n  var state = \"loading\";\n  var token = null;\n  var email = \"\";\n  var details = null;\n  var MISCONFIGURED = [\"wrong_tenant\", \"wrong_server\", \"wrong_table\", \"datasource_mismatch\"];\n\n  function clean(text, max) {\n    var s = String(text == null ? \"\" : text).replace(/[\\u0000-\\u001f\\u007f-\\u009f\\u200b-\\u200f\\u202a-\\u202e\\u2066-\\u2069]/g, \"\").trim();\n    return s.length > max ? s.slice(0, max - 1) + \"\\u2026\" : s;\n  }\n\n  function setText(id, text) { $(id).textContent = text; }\n\n  function show(view, focusId) {\n    [\"view-loading\", \"view-signin\", \"view-consent\", \"view-terminal\"].forEach(function (v) { $(v).hidden = v !== view; });\n    $(\"request\").hidden = !(view === \"view-signin\" || view === \"view-consent\");\n    var target = $(focusId || view + \"-heading\");\n    if (target) target.focus();\n  }\n\n  function terminal(title, text, retry) {\n    state = \"terminal\";\n    token = null;\n    setText(\"view-terminal-heading\", title);\n    setText(\"terminal-text\", text);\n    $(\"terminal-retry\").hidden = !retry;\n    show(\"view-terminal\");\n  }\n\n  var EXPIRED = [\"This sign-in link expired or was already used\", \"Return to your app and connect again.\"];\n  var OUTDATED = [\"This sign-in page is out of date\", \"The app's developer needs to update this page. Return to your app and try again later.\"];\n\n  function refusal(res, data) {\n    var reason = data && (data.message || (data.payload && data.payload.reason)) || \"\";\n    if (res.status === 401 || reason === \"stale_session\" || reason === \"request_expired\" || reason === \"request_used\") {\n      return terminal(EXPIRED[0], EXPIRED[1], false);\n    }\n    if (MISCONFIGURED.indexOf(reason) !== -1) {\n      return terminal(\"This sign-in page is misconfigured\", \"Tell the app's developer this code: \" + reason + \".\", false);\n    }\n    return null;\n  }\n\n  function call(path, init) {\n    return fetch(base + \"/\" + path, init).then(function (res) {\n      return res.text().then(function (t) {\n        var data = null;\n        try { data = t ? JSON.parse(t) : null; } catch (e) { data = null; }\n        return { res: res, data: data };\n      });\n    });\n  }\n\n  function describeHost(host) {\n    if (!host) return \"an app on this device\";\n    if (host === \"localhost\" || host === \"127.0.0.1\" || host === \"[::1]\" || host === \"::1\") return \"a program on this computer\";\n    return host;\n  }\n\n  function renderRequest(d) {\n    details = d;\n    var name = clean(d.client_name, 80) || \"An unnamed application\";\n    setText(\"client-name\", name);\n    setText(\"server-name\", clean(d.server_name, 80) || \"this app\");\n    setText(\"callback-host\", describeHost(clean(d.callback_host, 120)));\n    var verified = d.client_verified === true;\n    setText(\"client-status\", verified ? \"Verified\" : \"Not verified\");\n    $(\"unverified-warning\").hidden = verified;\n    var logo = $(\"client-logo\");\n    if (verified && typeof d.client_logo === \"string\" && d.client_logo.indexOf(\"https://\") === 0) {\n      logo.referrerPolicy = \"no-referrer\";\n      logo.src = d.client_logo;\n      logo.hidden = false;\n    } else {\n      logo.removeAttribute(\"src\");\n      logo.hidden = true;\n    }\n  }\n\n  function load() {\n    state = \"loading\";\n    token = null;\n    show(\"view-loading\");\n    if (!requestId) return terminal(\"This sign-in link is incomplete\", \"Return to your app and connect again.\", false);\n    call(\"mcp_oauth/request?mcp_request=\" + encodeURIComponent(requestId), { method: \"GET\" }).then(function (r) {\n      if (r.res.status === 404) return terminal(OUTDATED[0], OUTDATED[1], false);\n      if (r.res.ok) {\n        if (!r.data || r.data.contract !== CONTRACT) return terminal(OUTDATED[0], OUTDATED[1], false);\n        renderRequest(r.data);\n        state = \"signin\";\n        return show(\"view-signin\");\n      }\n      if (r.res.status >= 400 && r.res.status < 500 && refusal(r.res, r.data) === null) {\n        return terminal(\"Something went wrong\", \"Return to your app and connect again.\", false);\n      }\n      if (r.res.status >= 500) terminal(\"We couldn't load this sign-in\", \"Check your connection and try again.\", true);\n    }, function () {\n      terminal(\"We couldn't load this sign-in\", \"Check your connection and try again.\", true);\n    });\n  }\n\n  function busy(ids, on) { ids.forEach(function (id) { $(id).disabled = on; }); }\n\n  $(\"signin\").addEventListener(\"submit\", function (event) {\n    event.preventDefault();\n    if (state !== \"signin\") return;\n    state = \"signing-in\";\n    setText(\"signin-error\", \"\");\n    busy([\"signin-submit\", \"signin-cancel\"], true);\n    email = $(\"email\").value.trim();\n    call(\"mcp_oauth/sign_in\", {\n      method: \"POST\",\n      headers: { \"content-type\": \"application/json\" },\n      body: JSON.stringify({ email: email, password: $(\"password\").value }),\n    }).then(function (r) {\n      busy([\"signin-submit\", \"signin-cancel\"], false);\n      if (state !== \"signing-in\") return;\n      if (r.res.ok && r.data && typeof r.data.token === \"string\") {\n        token = r.data.token;\n        $(\"password\").value = \"\";\n        setText(\"signed-in-as\", email);\n        state = \"consent\";\n        var verified = details && details.client_verified === true;\n        return show(\"view-consent\", verified ? \"allow\" : \"deny\");\n      }\n      state = \"signin\";\n      $(\"password\").value = \"\";\n      if (r.res.status === 429) setText(\"signin-error\", \"Too many attempts. Wait a few minutes and try again.\");\n      else if (r.res.status === 403 || r.res.status === 400) setText(\"signin-error\", \"That email and password don't match an account.\");\n      else setText(\"signin-error\", \"Something went wrong. Try again.\");\n      $(\"email\").focus();\n    }, function () {\n      busy([\"signin-submit\", \"signin-cancel\"], false);\n      state = \"signin\";\n      setText(\"signin-error\", \"We couldn't reach the server. Try again.\");\n    });\n  });\n\n  $(\"signin-cancel\").addEventListener(\"click\", function () {\n    if (state !== \"signin\") return;\n    terminal(\"Sign-in cancelled\", \"You can close this tab.\", false);\n  });\n\n  function decide(decision) {\n    if (state !== \"consent\" || token === null) return;\n    state = \"completing\";\n    setText(\"consent-error\", \"\");\n    busy([\"allow\", \"deny\", \"switch-account\"], true);\n    call(\"mcp_oauth/complete\", {\n      method: \"POST\",\n      headers: { \"content-type\": \"application/json\", authorization: \"Bearer \" + token },\n      body: JSON.stringify({ mcp_request: requestId, decision: decision }),\n    }).then(function (r) {\n      if (state !== \"completing\") return;\n      busy([\"allow\", \"deny\", \"switch-account\"], false);\n      if (r.res.ok && r.data && typeof r.data.continue_url === \"string\") {\n        var url;\n        try { url = new URL(r.data.continue_url); } catch (e) { url = null; }\n        var safe = url && (url.protocol === \"https:\" || (url.protocol === \"http:\" && url.hostname === \"localhost\"));\n        if (!safe) return terminal(\"Something went wrong\", \"Return to your app and connect again.\", false);\n        state = \"navigating\";\n        token = null;\n        setText(\"view-terminal-heading\", decision === \"approve\" ? \"Returning you to your app\" : \"Access denied\");\n        setText(\"terminal-text\", \"Returning you to \" + describeHost(clean(details && details.callback_host, 120)) + \"\\u2026\");\n        $(\"terminal-retry\").hidden = true;\n        show(\"view-terminal\");\n        location.assign(url.href);\n        return;\n      }\n      if (refusal(r.res, r.data) !== null) return;\n      state = \"consent\";\n      setText(\"consent-error\", r.res.status === 429 ? \"Too many attempts. Wait a few minutes and try again.\" : \"Something went wrong. Try again.\");\n    }, function () {\n      if (state !== \"completing\") return;\n      busy([\"allow\", \"deny\", \"switch-account\"], false);\n      state = \"consent\";\n      setText(\"consent-error\", \"We couldn't reach the server. Try again.\");\n    });\n  }\n\n  $(\"allow\").addEventListener(\"click\", function () { decide(\"approve\"); });\n  $(\"deny\").addEventListener(\"click\", function () { decide(\"deny\"); });\n  $(\"switch-account\").addEventListener(\"click\", function () {\n    if (state !== \"consent\") return;\n    token = null;\n    state = \"signin\";\n    $(\"password\").value = \"\";\n    show(\"view-signin\", \"email\");\n  });\n  $(\"terminal-retry\").addEventListener(\"click\", function () { load(); });\n\n  if (window.top !== window.self) {\n    $(\"app\").hidden = true;\n    return;\n  }\n\n  window.addEventListener(\"pageshow\", function (event) { if (event.persisted) load(); });\n\n  var host = location.hostname;\n  $(\"shared-notice\").hidden = !(body.getAttribute(\"data-notice\") === \"1\" && /(^|\\.)xano\\.io$/.test(host));\n\n  load();\n})();\n</script>\n</body>\n</html>\n",
+            "_xsid": "",
+            "disabled": false
+          }
+        ],
+        "run": [
+          {
+            "as": "",
+            "name": "mvp:setheader",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "Content-Type: text/html; charset=utf-8",
+              "tag": "const",
+              "filters": [],
+              "duplicates": "replace"
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:setheader",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "Content-Security-Policy: default-src 'none'; script-src 'sha256-BL66QDZXdtxXPyRyxCJ3XEPvAqwPWBMwvQCky4uUKbk='; style-src 'sha256-VNKx9g5AJKz3XCQnkaOUmJp70bEQzbW0M4ZJnXTkKxw='; img-src https://cdn.golden.example.com https:; connect-src 'self'; form-action 'none'; base-uri 'none'; frame-ancestors 'none'",
+              "tag": "const",
+              "filters": [],
+              "duplicates": "replace"
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:setheader",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "X-Frame-Options: DENY",
+              "tag": "const",
+              "filters": [],
+              "duplicates": "replace"
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:setheader",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "Referrer-Policy: no-referrer",
+              "tag": "const",
+              "filters": [],
+              "duplicates": "replace"
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:setheader",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "Cache-Control: no-store",
+              "tag": "const",
+              "filters": [],
+              "duplicates": "replace"
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:setheader",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "X-Content-Type-Options: nosniff",
+              "tag": "const",
+              "filters": [],
+              "duplicates": "replace"
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          }
+        ],
+        "test": [],
+        "example": {},
+        "market_item": {
+          "id": 0,
+          "version": 0,
+          "guid": ""
+        },
+        "guid": "aecd78c1c9daacdbd415ade01e6fd77f"
+      },
+      {
+        "name": "mcp_oauth/request",
+        "description": "The verified details of a pending MCP sign-in: server, client, callback host, verified.",
+        "docs": "",
+        "api_enabled": true,
+        "auth": false,
+        "response_type": "standard",
+        "verb": "GET",
+        "disabled": false,
+        "app": {
+          "id": "c28ec38f91b73b91d20ba717a4ef256c"
+        },
+        "cache": {
+          "active": false,
+          "ttl": 3600,
+          "input": true,
+          "auth": true,
+          "datasource": true,
+          "ip": false,
+          "headers": [],
+          "env": []
+        },
+        "output": [],
+        "middleware": {
+          "pre_customize": false,
+          "post_customize": false,
+          "pre": [],
+          "post": []
+        },
+        "tag": [],
+        "history": {
+          "inherit": true,
+          "enabled": true,
+          "limit": 100
+        },
+        "input": [
+          {
+            "name": "mcp_request",
+            "type": "text",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          }
+        ],
+        "result": [
+          {
+            "filters": [],
+            "name": "server_name",
+            "tag": "var",
+            "value": "details.server_name",
+            "_xsid": "",
+            "disabled": false
+          },
+          {
+            "filters": [],
+            "name": "client_name",
+            "tag": "var",
+            "value": "details.client_name",
+            "_xsid": "",
+            "disabled": false
+          },
+          {
+            "filters": [],
+            "name": "client_logo",
+            "tag": "var",
+            "value": "client_logo",
+            "_xsid": "",
+            "disabled": false
+          },
+          {
+            "filters": [],
+            "name": "callback_host",
+            "tag": "var",
+            "value": "details.callback_host",
+            "_xsid": "",
+            "disabled": false
+          },
+          {
+            "filters": [],
+            "name": "client_verified",
+            "tag": "var",
+            "value": "details.client_verified",
+            "_xsid": "",
+            "disabled": false
+          },
+          {
+            "filters": [],
+            "name": "contract",
+            "tag": "const:int",
+            "value": "1",
+            "_xsid": "",
+            "disabled": false
+          }
+        ],
+        "run": [
+          {
+            "as": "details",
+            "name": "mvp:mcp_oauth_request",
+            "_xsid": "",
+            "addon": [],
+            "input": [
+              {
+                "name": "request",
+                "value": "mcp_request",
+                "tag": "input",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              }
+            ],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {},
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "client_logo",
+            "name": "mvp:set_var",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "",
+              "tag": "const",
+              "filters": []
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:conditional",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "expr": {
+                "expression": [
+                  {
+                    "type": "statement",
+                    "or": false,
+                    "group": {
+                      "expression": []
+                    },
+                    "statement": {
+                      "op": "=",
+                      "left": {
+                        "operand": "details.client_verified",
+                        "tag": "var",
+                        "filters": []
+                      },
+                      "right": {
+                        "operand": "true",
+                        "tag": "const:bool",
+                        "filters": []
+                      }
+                    }
+                  }
+                ]
+              },
+              "if": {
+                "run": [
+                  {
+                    "as": "",
+                    "name": "mvp:update_var",
+                    "_xsid": "",
+                    "addon": [],
+                    "input": [],
+                    "mocks": {},
+                    "output": {
+                      "items": [],
+                      "filters": [],
+                      "customize": false
+                    },
+                    "context": {
+                      "name": "client_logo",
+                      "value": "details.client_logo",
+                      "tag": "var",
+                      "filters": []
+                    },
+                    "runtime": null,
+                    "disabled": false,
+                    "description": "",
+                    "settings_registry": null
+                  }
+                ]
+              },
+              "elif": {
+                "run": []
+              },
+              "else": {
+                "run": []
+              }
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          }
+        ],
+        "test": [],
+        "example": {},
+        "market_item": {
+          "id": 0,
+          "version": 0,
+          "guid": ""
+        },
+        "guid": "2e2afa6bf73758db462243703f5c49b8"
+      },
+      {
+        "name": "mcp_oauth/sign_in",
+        "description": "Sign in with email and password; returns a 10-minute session for mcp_oauth/complete.",
+        "docs": "",
+        "api_enabled": true,
+        "auth": false,
+        "response_type": "standard",
+        "verb": "POST",
+        "disabled": false,
+        "app": {
+          "id": "c28ec38f91b73b91d20ba717a4ef256c"
+        },
+        "cache": {
+          "active": false,
+          "ttl": 3600,
+          "input": true,
+          "auth": true,
+          "datasource": true,
+          "ip": false,
+          "headers": [],
+          "env": []
+        },
+        "output": [],
+        "middleware": {
+          "pre_customize": false,
+          "post_customize": false,
+          "pre": [],
+          "post": []
+        },
+        "tag": [],
+        "history": {
+          "inherit": true,
+          "enabled": true,
+          "limit": 100
+        },
+        "input": [
+          {
+            "name": "email",
+            "type": "email",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [
+              {
+                "name": "trim",
+                "disabled": false,
+                "arg": []
+              },
+              {
+                "name": "lower",
+                "disabled": false,
+                "arg": []
+              }
+            ],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          },
+          {
+            "name": "password",
+            "type": "text",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          }
+        ],
+        "result": [
+          {
+            "filters": [],
+            "name": "token",
+            "tag": "var",
+            "value": "token",
+            "_xsid": "",
+            "disabled": false
+          }
+        ],
+        "run": [
+          {
+            "as": "",
+            "name": "mvp:redis_ratelimit",
+            "_xsid": "",
+            "addon": [],
+            "input": [
+              {
+                "name": "key",
+                "value": "mcpoauth:sign_in-ip:",
+                "tag": "const",
+                "filters": [
+                  {
+                    "name": "concat",
+                    "disabled": false,
+                    "arg": [
+                      {
+                        "value": "$remote_ip",
+                        "tag": "setting",
+                        "filters": []
+                      }
+                    ]
+                  }
+                ],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "max",
+                "value": "3",
+                "tag": "const:int",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "ttl",
+                "value": "120",
+                "tag": "const:int",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "error",
+                "value": "Too many sign-in attempts. Wait a few minutes and try again.",
+                "tag": "const",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              }
+            ],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {},
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:redis_ratelimit",
+            "_xsid": "",
+            "addon": [],
+            "input": [
+              {
+                "name": "key",
+                "value": "mcpoauth:sign_in-email:",
+                "tag": "const",
+                "filters": [
+                  {
+                    "name": "concat",
+                    "disabled": false,
+                    "arg": [
+                      {
+                        "value": "email",
+                        "tag": "input",
+                        "filters": []
+                      }
+                    ]
+                  }
+                ],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "max",
+                "value": "3",
+                "tag": "const:int",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "ttl",
+                "value": "120",
+                "tag": "const:int",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "error",
+                "value": "Too many sign-in attempts. Wait a few minutes and try again.",
+                "tag": "const",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              }
+            ],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {},
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "user",
+            "name": "mvp:dbo_getby",
+            "_xsid": "",
+            "addon": [],
+            "input": [
+              {
+                "name": "field_name",
+                "value": "login",
+                "tag": "const",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "field_value",
+                "value": "email",
+                "tag": "input",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              }
+            ],
+            "mocks": {},
+            "output": {
+              "items": [
+                {
+                  "name": "id",
+                  "children": []
+                },
+                {
+                  "name": "secret",
+                  "children": []
+                },
+                {
+                  "name": "enabled",
+                  "children": []
+                }
+              ],
+              "filters": [],
+              "customize": true
+            },
+            "context": {
+              "dbo": {
+                "id": "50c59633cff3dc002a763a036fb062b7"
+              }
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "password_hash",
+            "name": "mvp:set_var",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "59ad7897a30e940d.76b7f3f4338d5c6f945dc98785cdbdaf9c7f3ed657c107164befd593ce227ac0",
+              "tag": "const",
+              "filters": []
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "has_password",
+            "name": "mvp:set_var",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "value": "false",
+              "tag": "const:bool",
+              "filters": []
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:conditional",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "expr": {
+                "expression": [
+                  {
+                    "type": "statement",
+                    "or": false,
+                    "group": {
+                      "expression": []
+                    },
+                    "statement": {
+                      "op": "!=",
+                      "left": {
+                        "operand": "user",
+                        "tag": "var",
+                        "filters": []
+                      },
+                      "right": {
+                        "operand": "null",
+                        "tag": "const:null",
+                        "filters": []
+                      }
+                    }
+                  }
+                ]
+              },
+              "if": {
+                "run": [
+                  {
+                    "as": "",
+                    "name": "mvp:conditional",
+                    "_xsid": "",
+                    "addon": [],
+                    "input": [],
+                    "mocks": {},
+                    "output": {
+                      "items": [],
+                      "filters": [],
+                      "customize": false
+                    },
+                    "context": {
+                      "expr": {
+                        "expression": [
+                          {
+                            "type": "statement",
+                            "or": false,
+                            "group": {
+                              "expression": []
+                            },
+                            "statement": {
+                              "op": "!=",
+                              "left": {
+                                "operand": "user.secret",
+                                "tag": "var",
+                                "filters": []
+                              },
+                              "right": {
+                                "operand": "null",
+                                "tag": "const:null",
+                                "filters": []
+                              }
+                            }
+                          }
+                        ]
+                      },
+                      "if": {
+                        "run": [
+                          {
+                            "as": "",
+                            "name": "mvp:conditional",
+                            "_xsid": "",
+                            "addon": [],
+                            "input": [],
+                            "mocks": {},
+                            "output": {
+                              "items": [],
+                              "filters": [],
+                              "customize": false
+                            },
+                            "context": {
+                              "expr": {
+                                "expression": [
+                                  {
+                                    "type": "statement",
+                                    "or": false,
+                                    "group": {
+                                      "expression": []
+                                    },
+                                    "statement": {
+                                      "op": "=",
+                                      "left": {
+                                        "operand": "/^[0-9a-f]{16}\\.[0-9a-f]{64}$/",
+                                        "tag": "const",
+                                        "filters": [
+                                          {
+                                            "name": "regex_test",
+                                            "disabled": false,
+                                            "arg": [
+                                              {
+                                                "value": "user.secret",
+                                                "tag": "var",
+                                                "filters": []
+                                              }
+                                            ]
+                                          }
+                                        ]
+                                      },
+                                      "right": {
+                                        "operand": "true",
+                                        "tag": "const:bool",
+                                        "filters": []
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "if": {
+                                "run": [
+                                  {
+                                    "as": "",
+                                    "name": "mvp:update_var",
+                                    "_xsid": "",
+                                    "addon": [],
+                                    "input": [],
+                                    "mocks": {},
+                                    "output": {
+                                      "items": [],
+                                      "filters": [],
+                                      "customize": false
+                                    },
+                                    "context": {
+                                      "name": "password_hash",
+                                      "value": "user.secret",
+                                      "tag": "var",
+                                      "filters": []
+                                    },
+                                    "runtime": null,
+                                    "disabled": false,
+                                    "description": "",
+                                    "settings_registry": null
+                                  },
+                                  {
+                                    "as": "",
+                                    "name": "mvp:update_var",
+                                    "_xsid": "",
+                                    "addon": [],
+                                    "input": [],
+                                    "mocks": {},
+                                    "output": {
+                                      "items": [],
+                                      "filters": [],
+                                      "customize": false
+                                    },
+                                    "context": {
+                                      "name": "has_password",
+                                      "value": "true",
+                                      "tag": "const:bool",
+                                      "filters": []
+                                    },
+                                    "runtime": null,
+                                    "disabled": false,
+                                    "description": "",
+                                    "settings_registry": null
+                                  }
+                                ]
+                              },
+                              "elif": {
+                                "run": []
+                              },
+                              "else": {
+                                "run": []
+                              }
+                            },
+                            "runtime": null,
+                            "disabled": false,
+                            "description": "",
+                            "settings_registry": null
+                          }
+                        ]
+                      },
+                      "elif": {
+                        "run": []
+                      },
+                      "else": {
+                        "run": []
+                      }
+                    },
+                    "runtime": null,
+                    "disabled": false,
+                    "description": "",
+                    "settings_registry": null
+                  }
+                ]
+              },
+              "elif": {
+                "run": []
+              },
+              "else": {
+                "run": []
+              }
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "password_ok",
+            "name": "mvp:check_pass",
+            "_xsid": "",
+            "addon": [],
+            "input": [
+              {
+                "name": "text_password",
+                "value": "password",
+                "tag": "input",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "hash_password",
+                "value": "password_hash",
+                "tag": "var",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              }
+            ],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {},
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:precondition",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "expr": {
+                "expression": [
+                  {
+                    "type": "statement",
+                    "or": false,
+                    "group": {
+                      "expression": []
+                    },
+                    "statement": {
+                      "op": "!=",
+                      "left": {
+                        "operand": "user",
+                        "tag": "var",
+                        "filters": []
+                      },
+                      "right": {
+                        "operand": "null",
+                        "tag": "const:null",
+                        "filters": []
+                      }
+                    }
+                  }
+                ]
+              },
+              "error_type": "accessdenied",
+              "error": {
+                "value": "Invalid email or password.",
+                "tag": "const"
+              }
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:precondition",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "expr": {
+                "expression": [
+                  {
+                    "type": "statement",
+                    "or": false,
+                    "group": {
+                      "expression": []
+                    },
+                    "statement": {
+                      "op": "=",
+                      "left": {
+                        "operand": "has_password",
+                        "tag": "var",
+                        "filters": []
+                      },
+                      "right": {
+                        "operand": "true",
+                        "tag": "const:bool",
+                        "filters": []
+                      }
+                    }
+                  }
+                ]
+              },
+              "error_type": "accessdenied",
+              "error": {
+                "value": "Invalid email or password.",
+                "tag": "const"
+              }
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:precondition",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "expr": {
+                "expression": [
+                  {
+                    "type": "statement",
+                    "or": false,
+                    "group": {
+                      "expression": []
+                    },
+                    "statement": {
+                      "op": "=",
+                      "left": {
+                        "operand": "password_ok",
+                        "tag": "var",
+                        "filters": []
+                      },
+                      "right": {
+                        "operand": "true",
+                        "tag": "const:bool",
+                        "filters": []
+                      }
+                    }
+                  }
+                ]
+              },
+              "error_type": "accessdenied",
+              "error": {
+                "value": "Invalid email or password.",
+                "tag": "const"
+              }
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "",
+            "name": "mvp:precondition",
+            "_xsid": "",
+            "addon": [],
+            "input": [],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {
+              "expr": {
+                "expression": [
+                  {
+                    "type": "statement",
+                    "or": false,
+                    "group": {
+                      "expression": []
+                    },
+                    "statement": {
+                      "op": "=",
+                      "left": {
+                        "operand": "user.enabled",
+                        "tag": "var",
+                        "filters": []
+                      },
+                      "right": {
+                        "operand": "true",
+                        "tag": "const:bool",
+                        "filters": []
+                      }
+                    }
+                  }
+                ]
+              },
+              "error_type": "accessdenied",
+              "error": {
+                "value": "Invalid email or password.",
+                "tag": "const"
+              }
+            },
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          },
+          {
+            "as": "token",
+            "name": "mvp:create_auth",
+            "_xsid": "",
+            "addon": [],
+            "input": [
+              {
+                "name": "id",
+                "value": "user.id",
+                "tag": "var",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "dbtable",
+                "value": "50c59633cff3dc002a763a036fb062b7",
+                "tag": "const",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "extras",
+                "value": "{}",
+                "tag": "const:obj",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "expiration",
+                "value": "600",
+                "tag": "const:int",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              }
+            ],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {},
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          }
+        ],
+        "test": [],
+        "example": {},
+        "market_item": {
+          "id": 0,
+          "version": 0,
+          "guid": ""
+        },
+        "guid": "95965a156cc0e36b35e016145ebb75fe"
+      },
+      {
+        "name": "mcp_oauth/complete",
+        "description": "Approve or deny a pending MCP sign-in as the signed-in user; returns the URL to continue at.",
+        "docs": "",
+        "api_enabled": true,
+        "auth": "50c59633cff3dc002a763a036fb062b7",
+        "response_type": "standard",
+        "verb": "POST",
+        "disabled": false,
+        "app": {
+          "id": "c28ec38f91b73b91d20ba717a4ef256c"
+        },
+        "cache": {
+          "active": false,
+          "ttl": 3600,
+          "input": true,
+          "auth": true,
+          "datasource": true,
+          "ip": false,
+          "headers": [],
+          "env": []
+        },
+        "output": [],
+        "middleware": {
+          "pre_customize": false,
+          "post_customize": false,
+          "pre": [],
+          "post": []
+        },
+        "tag": [],
+        "history": {
+          "inherit": true,
+          "enabled": true,
+          "limit": 100
+        },
+        "input": [
+          {
+            "name": "mcp_request",
+            "type": "text",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          },
+          {
+            "name": "decision",
+            "type": "enum",
+            "_xsid": "",
+            "nullable": false,
+            "default": "",
+            "merge": false,
+            "hidden": [],
+            "override": [],
+            "customize": {},
+            "required": true,
+            "values": [
+              "approve",
+              "deny"
+            ],
+            "mode": "",
+            "format": "",
+            "sensitive": false,
+            "list": {
+              "min": "",
+              "max": ""
+            },
+            "vector": {
+              "size": 3
+            },
+            "access": "public",
+            "style": {
+              "type": "single"
+            },
+            "children": [],
+            "methods": [],
+            "market_item": {
+              "id": 0,
+              "version": 0,
+              "guid": ""
+            },
+            "is_settings_registry": false,
+            "description": ""
+          }
+        ],
+        "result": [
+          {
+            "filters": [],
+            "name": "continue_url",
+            "tag": "var",
+            "value": "continue_url",
+            "_xsid": "",
+            "disabled": false
+          }
+        ],
+        "run": [
+          {
+            "as": "continue_url",
+            "name": "mvp:mcp_oauth_complete",
+            "_xsid": "",
+            "addon": [],
+            "input": [
+              {
+                "name": "request",
+                "value": "mcp_request",
+                "tag": "input",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              },
+              {
+                "name": "decision",
+                "value": "decision",
+                "tag": "input",
+                "filters": [],
+                "ignore": false,
+                "expand": false,
+                "children": []
+              }
+            ],
+            "mocks": {},
+            "output": {
+              "items": [],
+              "filters": [],
+              "customize": false
+            },
+            "context": {},
+            "runtime": null,
+            "disabled": false,
+            "description": "",
+            "settings_registry": null
+          }
+        ],
+        "test": [],
+        "example": {},
+        "market_item": {
+          "id": 0,
+          "version": 0,
+          "guid": ""
+        },
+        "guid": "c73632038f52023bd3e4c802e46f3967"
+      }
+    ],
+    "tool": [],
+    "prompt": [],
+    "resource": [],
+    "toolset": [],
+    "app": [
+      {
+        "name": "MCP OAuth",
+        "description": "Sign-in and consent for this workspace's MCP servers. Registered by @xano-sdk/mcp-oauth.",
+        "canonical": "golden-signin",
+        "swagger": false,
+        "api_group_enabled": true,
+        "docs": "",
+        "documentation": {
+          "require_token": false,
+          "token": ""
+        },
+        "middleware": {
+          "pre_customize": false,
+          "post_customize": false,
+          "pre": [],
+          "post": []
+        },
+        "history": {
+          "inherit": false,
+          "query_enabled": true,
+          "query_limit": 100
+        },
+        "tag": [],
+        "cors": {
+          "mode": "default",
+          "allowOrigins": [],
+          "allowHeaders": [],
+          "allowCredentials": false,
+          "maxAge": 0,
+          "allowMethods": {
+            "delete": false,
+            "get": false,
+            "head": false,
+            "patch": false,
+            "post": false,
+            "put": false
+          }
+        },
+        "guid": "c28ec38f91b73b91d20ba717a4ef256c"
+      }
+    ],
+    "knowledge": [],
+    "knowledge_file": [],
+    "realtime_server": [],
+    "channel": [],
+    "message": [],
+    "microservice": [],
+    "vault": [],
+    "market_item": [],
+    "run_install": [],
+    "action_package_install": [],
+    "env": [],
+    "workflow_test": [],
+    "service": [],
+    "branch": []
+  },
+  "sig": "yKs7xLccy8Zxv0Sb5Jz76xxTvrM."
+}
