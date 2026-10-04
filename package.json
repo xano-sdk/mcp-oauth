@@ -21,11 +21,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xanots/mcp-oauth.git"
+    "url": "git+https://github.com/xano-sdk/mcp-oauth.git"
   },
-  "homepage": "https://github.com/xanots/mcp-oauth#readme",
+  "homepage": "https://github.com/xano-sdk/mcp-oauth#readme",
   "bugs": {
-    "url": "https://github.com/xanots/mcp-oauth/issues"
+    "url": "https://github.com/xano-sdk/mcp-oauth/issues"
   },
   "xanosdk": {
     "register": "registerMcpOauth",

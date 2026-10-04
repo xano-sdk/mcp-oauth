@@ -9,7 +9,7 @@ execution: code
 
 # MCP OAuth Sign-in Module - Plan
 
-**Target repo:** `xanots/mcp-oauth` (this repo). Pattern sources are the sibling module repos `xanots/password-reset` and `xanots/auth`, and the SDK repo `xanots/sdk`; paths into those repos are prefixed `[password-reset]`, `[auth]`, `[sdk]`.
+**Target repo:** `xano-sdk/mcp-oauth` (this repo). Pattern sources are the sibling module repos `xanots/password-reset` and `xano-sdk/auth`, and the SDK repo `xano-sdk/sdk-dev`; paths into those repos are prefixed `[password-reset]`, `[auth]`, `[sdk]`.
 
 ---
 
@@ -321,7 +321,7 @@ local-files/probe/   (gitignored live probes)
   - `.github/workflows/ci.yml`, `GEMINI.md`, `.cursor/rules/xanosdk-module.mdc`, `.github/copilot-instructions.md`
   - `src/index.ts`, `test/setup.ts`
 - **Approach:**
-  1. Copy the config files verbatim from `[password-reset]`. Set `name: @xano-sdk/mcp-oauth`, version `1.0.0`, peer `@xano/sdk >=1.0.0 <2.0.0`, dev pin `1.0.0` exact, `engines.node >=20`, and the repository, homepage and bugs URLs for `xanots/mcp-oauth`.
+  1. Copy the config files verbatim from `[password-reset]`. Set `name: @xano-sdk/mcp-oauth`, version `1.0.0`, peer `@xano/sdk >=1.0.0 <2.0.0`, dev pin `1.0.0` exact, `engines.node >=20`, and the repository, homepage and bugs URLs for `xano-sdk/mcp-oauth`.
   2. Add the `"xanosdk"` manifest block per KTD9.
   3. Copy `ci.yml` and the three pointer files from `[password-reset]`. Each pointer file only points at `AGENTS.md`.
   4. Leave the existing `.github/` Slack files and `AGENTS.md` sections in place. Later units extend `AGENTS.md`.
