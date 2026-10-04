@@ -229,7 +229,7 @@ Check it with `xanosdk marketplace details @xano-sdk/mcp-oauth --prompt`.
 
 ### Release notes
 
-Start from [.github/RELEASE_TEMPLATE.md](https://github.com/xanots/mcp-oauth/blob/main/.github/RELEASE_TEMPLATE.md) — it
+Start from [.github/RELEASE_TEMPLATE.md](https://github.com/xano-sdk/mcp-oauth/blob/main/.github/RELEASE_TEMPLATE.md) — it
 carries both the shape and the constraints the Slack announcement imposes, and
 its guidance lives in HTML comments that are stripped before Slack sees them, so
 it can stay in the draft while you write.
@@ -251,7 +251,7 @@ runs `.github/scripts/test_slack_release_message.py` in the same job that posts 
 a malformed payload fails the workflow rather than reaching Slack. That suite
 renders `RELEASE_TEMPLATE.md` through the real builder, so a change to either
 file has to keep the other true. Both the builder and that test are kept
-identical to `xanots/sdk`'s, modulo the repo and package names; port fixes
+identical to `xano-sdk/sdk-dev`'s, modulo the repo and package names; port fixes
 between the two rather than letting them diverge. Check a draft locally first:
 
 ```bash
