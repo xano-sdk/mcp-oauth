@@ -1,6 +1,6 @@
 {
   "name": "@xano-sdk/mcp-oauth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Hosted OAuth sign-in for Xano SDK MCP servers: a branded sign-in and consent page, the endpoints behind it, and the oauth block for mcpServer().",
   "type": "module",
   "license": "MIT",
