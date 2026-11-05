@@ -24,6 +24,7 @@ npm run build          # tsup → dist/ (esm + d.ts)
 npm run typecheck      # tsc --noEmit
 npm run lint           # eslint .
 npm test               # tsc --noEmit && vitest run (type-level tests need the typecheck)
+XANO_LIVE_PROFILE=<profile> npm run test:live   # run the whole sign-in on a cloud ephemeral, then delete it
 npm run fixture:regen  # rewrite the golden bundle - a reviewed act, see below
 ```
 
@@ -166,7 +167,7 @@ It was deployed following the README Quickstart steps exactly.
 
 ## The peer range
 
-`peerDependencies["@xano/sdk"]` is `>=1.0.0 <2.0.0`. The dev pin is exact (`1.0.0`, no caret):
+`peerDependencies["@xano/sdk"]` is `>=1.0.0 <2.0.0`. The dev pin is exact (`1.0.19`, no caret):
 it is the version the golden fixture was generated against, and the number README and llms.txt
 quote as tested.
 

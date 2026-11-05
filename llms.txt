@@ -19,7 +19,7 @@ npm install @xano-sdk/mcp-oauth @xano/sdk
 ```
 
 `@xano/sdk` is a **peer dependency**, range `>=1.0.0 <2.0.0` - one shared copy only. Tested
-against **1.0.0** exactly: the version its golden bundle fixture was generated against. The golden
+against **1.0.19** exactly: the version its golden bundle fixture was generated against. The golden
 fixture freezes the bytes this module encodes to (endpoints, headers, the rendered page). It does
 not cover what the platform does with them - that is covered by the live runs recorded in
 `AGENTS.md`.

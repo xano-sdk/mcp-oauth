@@ -23,7 +23,7 @@ npm install @xano-sdk/mcp-oauth @xano/sdk
 ```
 
 `@xano/sdk` is a **peer dependency**, range `>=1.0.0 <2.0.0`. Keep one shared copy, or the statement
-and kind registries fork. This package is **tested against 1.0.0** exactly, the version its golden
+and kind registries fork. This package is **tested against 1.0.19** exactly, the version its golden
 bundle fixture was generated against.
 
 With the CLI:
