@@ -167,7 +167,7 @@ It was deployed following the README Quickstart steps exactly.
 
 ## The peer range
 
-`peerDependencies["@xano/sdk"]` is `>=1.0.0 <2.0.0`. The dev pin is exact (`1.0.19`, no caret):
+`peerDependencies["@xano/sdk"]` is `>=1.0.0 <2.0.0`. The dev pin is exact (`1.0.22`, no caret):
 it is the version the golden fixture was generated against, and the number README and llms.txt
 quote as tested.
 
